@@ -1,6 +1,5 @@
 package org.example;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Task6 implements Task {
@@ -12,27 +11,42 @@ public class Task6 implements Task {
         int n = Integer.parseInt(scanner.nextLine());
         String[] numbersStr = scanner.nextLine().split(" ");
 
-        int countOfEvenNumbers = 0;
         int countOfOddNumbers = 0;
 
         for (String i : numbersStr) {
             int number = Integer.parseInt(i);
-            if (number % 2 == 0) {
-                countOfEvenNumbers++;
+            if (number % 2 == 1 || number % 2 == -1) {
+                countOfOddNumbers++;
             }
             numbers.add(number);
         }
 
-        countOfOddNumbers = n - countOfEvenNumbers;
+        StringBuilder result = getResult(countOfOddNumbers, n, numbers);
 
-        String result = numbersStr[0];
+        System.out.println(result);
 
-        for (int i = 1; i < n; i++) {
-            if (numbers.get(i) % 2 == 0) {
-                result += "+" + numbersStr[i];
-                countOfEvenNumbers--;
+    }
+
+    private static StringBuilder getResult(int countOfOddNumbers, int n, ArrayList<Integer> numbers) {
+        StringBuilder result = new StringBuilder();
+
+        if (countOfOddNumbers % 2 == 0) {
+            boolean firstOddNotFound = true;
+            for (int i = 1; i < n; i++) {
+                if (numbers.get(i) % 2 == 0) {
+                    result.append("+");
+                } else {
+                    if (firstOddNotFound) {
+                        result.append("x");
+                        firstOddNotFound = false;
+                    } else {
+                        result.append("+");
+                    }
+                }
             }
+        } else {
+            result.append("+".repeat(n - 1));
         }
-
+        return result;
     }
 }
