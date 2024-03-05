@@ -1,7 +1,7 @@
 package org.example;
 import java.util.Scanner;
-public class Task2 {
 
+public class Task2 implements Task {
 
     public void start() {
 

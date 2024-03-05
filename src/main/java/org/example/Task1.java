@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Scanner;
 
-public class Task1 {
+public class Task1 implements Task {
     public void start() {
         Scanner scanner = new Scanner(System.in);
 

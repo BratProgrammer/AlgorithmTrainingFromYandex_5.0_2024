@@ -1,6 +1,7 @@
 package org.example;
 import java.util.Scanner;
-public class Task3 {
+
+public class Task3 implements Task {
 
     private int getCountOfPresses(int countOfSpaces) {
         int result = 0;

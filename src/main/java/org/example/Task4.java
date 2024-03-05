@@ -2,7 +2,7 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Task4 {
+public class Task4 implements Task {
 
     private static int getUnderAttack(char[][] chessBoard, ArrayList<int[]> rooksCoordinates, ArrayList<int[]> bishopsCoordinates) {
         int underAttack = 0;
