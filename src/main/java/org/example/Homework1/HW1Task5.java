@@ -1,10 +1,10 @@
-package org.example;
-import java.rmi.registry.LocateRegistry;
+package org.example.Homework1;
+import org.example.Task;
+
 import java.util.Scanner;
-import java.util.Set;
 
 
-public class Task5 implements Task {
+public class HW1Task5 implements Task {
 
     public void start() {
         Scanner scanner = new Scanner(System.in);

@@ -1,7 +1,9 @@
-package org.example;
+package org.example.Homework1;
+import org.example.Task;
+
 import java.util.Scanner;
 
-public class Task2 implements Task {
+public class HW1Task2 implements Task {
 
     public void start() {
 

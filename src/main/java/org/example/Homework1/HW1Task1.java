@@ -1,8 +1,10 @@
-package org.example;
+package org.example.Homework1;
+
+import org.example.Task;
 
 import java.util.Scanner;
 
-public class Task1 implements Task {
+public class HW1Task1 implements Task {
     public void start() {
         Scanner scanner = new Scanner(System.in);
 
