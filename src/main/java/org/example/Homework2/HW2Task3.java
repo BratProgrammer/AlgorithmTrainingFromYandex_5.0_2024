@@ -1,14 +1,13 @@
-package org.example;
+package org.example.Homework2;
 
-import org.example.Homework2.HM2Task2;
-import org.example.Homework2.HW2Task1;
-import org.example.Homework2.HW2Task3;
+import org.example.Main;
+import org.example.Task;
 
 import java.util.Scanner;
 
-public class Main {
-
-    public static void main(String[] args) {
+public class HW2Task3 implements Task {
+    @Override
+    public void start() {
         Scanner scanner = new Scanner(System.in);
         int n = Integer.parseInt(scanner.nextLine());
 
