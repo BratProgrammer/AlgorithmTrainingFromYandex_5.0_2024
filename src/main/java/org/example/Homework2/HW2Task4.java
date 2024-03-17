@@ -1,17 +1,18 @@
-package org.example;
+package org.example.Homework2;
 
-import org.example.Homework2.HW2Task4;
+import org.example.Task;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class HW2Task4 implements Task {
 
-    private static boolean coordinatesEqual(int[] coordinates1, int[] coordinates2) {
+    private boolean coordinatesEqual(int[] coordinates1, int[] coordinates2) {
         return coordinates1[0] == coordinates2[0] && coordinates1[1] == coordinates2[1];
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void start() {
         Scanner scanner = new Scanner(System.in);
         int n = Integer.parseInt(scanner.nextLine());
         ArrayList<int[]> coordinatesList = new ArrayList<>();
