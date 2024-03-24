@@ -1,85 +1,52 @@
 package org.example;
 
-import org.example.Homework2.HW2Task4;
-import org.example.Homework2.HW2Task5;
-
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int n = Integer.parseInt(scanner.nextLine());
 
-        ArrayList<Integer> indexesOfPositiveValueBerries = new ArrayList<Integer>();
-        ArrayList<Integer> indexesOfZeroValueBerries = new ArrayList<Integer>();
-        ArrayList<Integer> indexesOfNegativeValueBerries = new ArrayList<Integer>();
-        ArrayList<Integer> profitsOfBerries = new ArrayList<Integer>();
-        ArrayList<Integer> upValues = new ArrayList<Integer>();
+        int t = scanner.nextInt();
 
-        long height = 0;
-        int indexOfEndProfitBerrie = 0;
+        ArrayList<Integer> inputArray = new ArrayList<  >();
+        ArrayList<String> answers = new ArrayList<>();
 
-        StringBuilder indexes = new StringBuilder();
+        int n;
 
-
-        for (int i = 0; i < n; i++) {
-            String[] inputValues = scanner.nextLine().split(" ");
-
-            int upValue = Integer.parseInt(inputValues[0]);
-            int downValue = Integer.parseInt(inputValues[1]);
-
-            if (upValue > downValue) {
-                indexesOfPositiveValueBerries.add(i + 1);
-                height += upValue - downValue;
-                indexes.append(" ").append(i + 1);
-            } else if (upValue == downValue) {
-                indexesOfZeroValueBerries.add(i + 1);
-            } else {
-                indexesOfNegativeValueBerries.add(i + 1);
+        for (int i = 0; i < t; i++) {
+            n = scanner.nextInt();
+            for (int j = 0; j < n; j++) {
+                inputArray.add(scanner.nextInt());
             }
 
-            profitsOfBerries.add(upValue - downValue);
-            upValues.add(upValue);
+            Collections.sort(inputArray);
 
-        }
+            String lengthsOfSmallArraysStr = "";
+            int countOfNewArrays = 0;
+            int numberOfRawElements = inputArray.size();
+            int index = 0;
 
-        long maxHeight = height;
-
-        for (int i = 0; i < n; i++) {
-            if (indexesOfPositiveValueBerries.contains(i + 1)) {
-                if (maxHeight <= height + upValues.get(i) - profitsOfBerries.get(i)) {
-                    maxHeight = height + upValues.get(i) - profitsOfBerries.get(i);
-                    indexOfEndProfitBerrie = i + 1;
+            do {
+                int item = inputArray.get(index);
+                countOfNewArrays += 1;
+                if (item <= numberOfRawElements) {
+                    lengthsOfSmallArraysStr += " " + item;
+                    numberOfRawElements -= item;
+                    index += item;
+                } else {
+                    lengthsOfSmallArraysStr += " " + numberOfRawElements;
+                    numberOfRawElements = 0;
                 }
-            } else {
-                if (maxHeight < height + upValues.get(i)) {
-                    maxHeight = height + upValues.get(i);
-                    indexOfEndProfitBerrie = i + 1;
-                }
-            }
+            } while (numberOfRawElements != 0);
+
+            answers.add(Integer.toString(countOfNewArrays));
+            answers.add(lengthsOfSmallArraysStr.trim());
+            inputArray.clear();
         }
 
-        String indexesStr = indexes.toString().replace(" " + indexOfEndProfitBerrie, " ") + " " + indexOfEndProfitBerrie;
-
-        if (indexesOfNegativeValueBerries.contains(indexOfEndProfitBerrie)) {
-            indexesOfNegativeValueBerries.remove((Integer) indexOfEndProfitBerrie);
-        } else if (indexesOfZeroValueBerries.contains(indexOfEndProfitBerrie)) {
-            indexesOfZeroValueBerries.remove((Integer) indexOfEndProfitBerrie);
-        }
-
-        for (int i : indexesOfZeroValueBerries) {
-            indexesStr += " " + i;
-        }
-
-        for (int i : indexesOfNegativeValueBerries) {
-            indexesStr += " " + i;
-        }
-
-        System.out.println(maxHeight);
-        System.out.println(indexesStr.trim());
+        answers.forEach(System.out::println);
     }
 }
