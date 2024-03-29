@@ -1,10 +1,18 @@
 package org.example;
 
-import org.example.Homework3.HW3Task4;
+
+import org.example.Homework4.HW4Task1;
+import org.example.Homework4.HW4Task2;
+
+import java.math.BigInteger.*;
+import java.math.BigInteger;
+
+import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
-        HW3Task4 task4 = new HW3Task4();
-        task4.start();
+        HW4Task1 task1 = new HW4Task1();
+        task1.start();
     }
 }
